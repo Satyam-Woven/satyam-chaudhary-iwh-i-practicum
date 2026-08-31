@@ -1,0 +1,26 @@
+doctype html
+html(lang="en")
+  head
+    title= title
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    main.container
+      h1= title
+      p
+        a(href="/") Return to the homepage
+
+      form(method="POST" action="/update-cobj")
+        .form-field
+          label(for="name") Name
+          input#name(type="text" name="name" required)
+
+        .form-field
+          label(for="bio") Bio
+          textarea#bio(name="bio" rows="4" required)
+
+        .form-field
+          label(for="power") Power
+          input#power(type="number" name="power" min="0" max="100" required)
+
+        button(type="submit") Create custom object record

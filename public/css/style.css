@@ -54,6 +54,37 @@ th {
   color: white;
 }
 
+.form-field {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.65rem;
+  border: 1px solid #b6c7d6;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+button {
+  display: inline-block;
+  margin: 0 0 1rem;
+  padding: 0.75rem 1rem;
+  background: #ff5c35;
+  border: 0;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
 .error-message {
   padding: 0.75rem;
   background: #fff3cd;
