@@ -1,0 +1,30 @@
+doctype html
+html(lang="en")
+  head
+    title= title
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    main.container
+      h1 Marvel Character Records
+      a.button-link(href="/update-cobj") Add to this table
+
+      if error
+        p.error-message= error
+
+      table
+        thead
+          tr
+            th Name
+            th Bio
+            th Power
+        tbody
+          if data && data.length
+            each record in data
+              tr
+                td= record.properties.name || ''
+                td= record.properties.bio || ''
+                td= record.properties.power || ''
+          else
+            tr
+              td(colspan="3") No custom object records found.
