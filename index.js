@@ -87,4 +87,33 @@ app.get('/update-cobj', (req, res) => {
   });
 });
 
+app.post('/update-cobj', async (req, res) => {
+  const newRecord = {
+    properties: {
+      name: req.body.name,
+      bio: req.body.bio,
+      power: req.body.power
+    }
+  };
+
+  if (MOCK_HUBSPOT) {
+    console.log('MOCK_HUBSPOT=true, not creating a HubSpot record:', newRecord);
+    return res.redirect('/');
+  }
+
+  if (missingHubSpotConfig()) {
+    return res.status(500).send('Add HUBSPOT_PRIVATE_APP_ACCESS_TOKEN and HUBSPOT_CUSTOM_OBJECT_TYPE to your .env file to call HubSpot.');
+  }
+
+  const objectUrl = `https://api.hubapi.com/crm/v3/objects/${CUSTOM_OBJECT_TYPE}`;
+
+  try {
+    await axios.post(objectUrl, newRecord, { headers: hubspotHeaders });
+    res.redirect('/');
+  } catch (error) {
+    console.error('Error creating Marvel character record:', error.response?.data || error.message);
+    res.status(500).send('Unable to create Marvel character record in HubSpot. Check your token, scopes, object type ID, and property internal names.');
+  }
+});
+
 app.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
