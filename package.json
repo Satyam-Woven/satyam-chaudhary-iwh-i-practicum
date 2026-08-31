@@ -1,0 +1,17 @@
+{
+  "name": "satyam-chaudhary-iwh-i-practicum",
+  "version": "1.0.0",
+  "description": "Integrating With HubSpot I: Foundations practicum Node application",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Satyam Chaudhary",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "pug": "^3.0.3"
+  }
+}
